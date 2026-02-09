@@ -2,113 +2,29 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¡Haz clic aquí para ver algo INCREÍBLE!</title>
+    <title>Video Autoplay</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: black;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
-            color: #333;
-            text-align: center;
-            flex-direction: column;
+            height: 100vh;
         }
-        .container {
-            background-color: #fff;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
-            width: 90%;
-            cursor: pointer; /* Indica que es clickeable */
-            transition: transform 0.2s ease-in-out;
-        }
-        .container:hover {
-            transform: translateY(-5px);
-        }
-        h1 {
-            color: #007bff;
-            margin-bottom: 20px;
-        }
-        p {
-            font-size: 1.1em;
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
-        .play-button {
-            display: inline-block;
-            background-color: #28a745;
-            color: white;
-            padding: 12px 25px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-        }
-        .play-button:hover {
-            background-color: #218838;
-        }
-        .hidden-video {
-            display: none; /* Oculta el video por defecto */
-            margin-top: 30px;
+
+        video {
             max-width: 100%;
-            height: auto;
+            max-height: 100%;
         }
     </style>
 </head>
 <body>
 
-    <div class="container" id="mainContent">
-        <h1>¡No te pierdas esto!</h1>
-        <p>
-            Hemos descubierto algo asombroso que cambiará tu perspectiva.
-            Haz clic en el botón de abajo para revelar el contenido exclusivo.
-            ¡Te garantizamos que valdrá la pena!
-        </p>
-        <a href="#" class="play-button" id="revealButton">VER AHORA</a>
-    </div>
-
-    <video id="myVideo" class="hidden-video" controls muted playsinline>
-        <source src="tu_video.mp4" type="video/mp4">
-        Tu navegador no soporta la reproducción de video.
+    <video autoplay muted loop playsinline>
+        <source src="screamer.mp4" type="video/mp4">
+        Tu navegador no soporta videos HTML5.
     </video>
-
-    <script>
-        const mainContent = document.getElementById('mainContent');
-        const revealButton = document.getElementById('revealButton');
-        const myVideo = document.getElementById('myVideo');
-
-        // Función para ocultar el contenido principal y mostrar el video
-        function revealVideo() {
-            mainContent.style.display = 'none'; // Oculta el texto y el botón
-            myVideo.style.display = 'block';    // Muestra el video
-            myVideo.muted = false; // Desactiva el mute para que el sonido se reproduzca
-            myVideo.play();         // Reproduce el video
-        }
-
-        // Listener para el botón "VER AHORA"
-        revealButton.addEventListener('click', function(event) {
-            event.preventDefault(); // Evita que el enlace recargue la página
-            revealVideo();
-        });
-
-        // Opcional: Si quieres que el clic en cualquier parte del "contenedor" lo revele
-        mainContent.addEventListener('click', function() {
-            // No hacemos event.preventDefault() aquí si ya está en el botón
-            // Si solo el contenedor lo revela y no hay botón, sí lo necesitarías.
-            // Para este ejemplo, el botón es el principal.
-        });
-
-        // Autoplay con mute inicial (si el navegador lo permite sin interacción)
-        // Puedes descomentar la siguiente línea si quieres probar un autoplay inmediato,
-        // pero ten en cuenta que la mayoría de navegadores lo requerirán silenciado
-        // hasta que el usuario interactúe. El botón ya maneja la interacción.
-        // myVideo.play();
-    </script>
 
 </body>
 </html>
